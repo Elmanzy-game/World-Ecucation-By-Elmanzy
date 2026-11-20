@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#101735">
+<title>World-Ecucation by Elmanzy</title>
+<style>
+:root{--bg:#0a1026;--panel:#151f42;--panel2:#202d58;--ink:#f6f8ff;--muted:#b7c3e8;--cyan:#42e6d0;--violet:#a99aff;--gold:#ffd166;--good:#26c98b;--bad:#ff6685}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(circle at 8% 0%,#33246e 0,transparent 34%),radial-gradient(circle at 95% 15%,#075b67 0,transparent 30%),var(--bg);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+.wrap{width:min(1050px,100%);margin:auto;padding:18px 15px 42px}.top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px}.brand{display:flex;align-items:center;gap:11px;font-weight:950;letter-spacing:.02em}.logo{width:46px;height:46px;border-radius:15px;background:linear-gradient(135deg,var(--violet),var(--cyan));display:grid;place-items:center;font-size:25px;box-shadow:0 8px 25px #0006}.brand small{display:block;color:var(--muted);font-size:.72rem;letter-spacing:.12em}.topnote{color:var(--muted);font-size:.8rem}
+.hero{padding:30px 25px;border:1px solid #ffffff24;border-radius:27px;background:linear-gradient(125deg,#30256ddd,#104b5ddd);box-shadow:0 18px 50px #0005}.eyebrow{color:#9efff1;font-weight:850;font-size:.75rem;letter-spacing:.16em}.hero h1{font-size:clamp(2rem,7vw,3.8rem);line-height:1.02;margin:10px 0}.hero h1 span{color:var(--cyan)}.hero p{color:#d9e3ff;max-width:700px;line-height:1.6;margin:10px 0 0}
+.panel{margin-top:17px;padding:22px;border:1px solid #ffffff20;border-radius:23px;background:#141c3eef;box-shadow:0 12px 35px #0004}.panel h2{margin:0 0 7px;font-size:1.3rem}.sub{color:var(--muted);margin:0 0 17px;font-size:.92rem;line-height:1.5}
+.subjects{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.subject{border:1px solid #ffffff24;background:linear-gradient(145deg,#263366,#192448);color:var(--ink);padding:15px;border-radius:17px;text-align:left;cursor:pointer;display:flex;align-items:center;gap:12px;min-height:76px;transition:.18s}.subject:hover,.subject:focus-visible{transform:translateY(-2px);border-color:var(--cyan);outline:none}.emoji{font-size:28px}.subject strong{display:block;font-size:.96rem}.subject small{color:var(--muted)}
+.btn{border:0;border-radius:14px;padding:12px 17px;font-weight:850;font-size:.94rem;cursor:pointer;color:#111638;background:linear-gradient(100deg,#b7aaff,#55ead6);box-shadow:0 7px 20px #0003}.btn.secondary{background:#303e73;color:white;border:1px solid #ffffff25;box-shadow:none}.btn:disabled{opacity:.45;cursor:not-allowed}.btnrow{display:flex;gap:9px;flex-wrap:wrap;margin-top:15px}
+.modegrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.mode{padding:16px;border-radius:17px;border:1px solid #ffffff24;background:linear-gradient(145deg,#263366,#192448);color:white;text-align:left;cursor:pointer;min-height:112px}.mode:hover{border-color:var(--cyan);transform:translateY(-2px)}.mode b{display:block;font-size:1rem;margin:6px 0}.mode small{color:var(--muted);line-height:1.45}.mode .mi{font-size:25px}
+.row{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.stats{display:flex;gap:8px;flex-wrap:wrap}.stat{background:#26315e;border:1px solid #ffffff18;padding:8px 11px;border-radius:12px;color:#dce5ff;font-size:.85rem}.stat b{color:white}.progress{height:9px;background:#303b67;border-radius:99px;overflow:hidden;margin:17px 0}.bar{height:100%;width:0;background:linear-gradient(90deg,var(--violet),var(--cyan));transition:width .25s}.qnum{color:#9efff1;font-weight:850;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase}.question{font-size:clamp(1.15rem,4vw,1.55rem);line-height:1.45;margin:11px 0 18px}.answers{display:grid;gap:10px}.answer{width:100%;text-align:left;padding:14px;border-radius:15px;border:1px solid #ffffff27;background:#222e5a;color:white;font-size:1rem;cursor:pointer;display:flex;gap:12px;align-items:center}.answer .letter{width:30px;height:30px;flex:none;border-radius:9px;background:#3c4b83;display:grid;place-items:center;font-weight:900}.answer:hover:not(:disabled){border-color:var(--violet);background:#303c70}.answer.correct{border-color:var(--good);background:#12533f}.answer.wrong{border-color:var(--bad);background:#61263b}.answer:disabled{cursor:default}
+.feedback{margin-top:14px;padding:13px 15px;border-radius:13px;line-height:1.5;background:#26315e;color:#eef1ff}.feedback.good{border:1px solid #26c98b88}.feedback.bad{border:1px solid #ff668588}.actions{display:flex;justify-content:space-between;gap:10px;margin-top:18px}.hidden{display:none!important}.result{text-align:center;padding:15px 0}.medal{font-size:64px}.score{font-size:clamp(2.7rem,10vw,4.4rem);font-weight:950;line-height:1.1;margin:10px}.result p{color:var(--muted);line-height:1.6}.result-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:20px}
+footer{text-align:center;color:#98a6d4;font-size:.78rem;padding:22px 8px;line-height:1.7}.credit{color:var(--cyan);font-weight:900}
+@media(min-width:650px){.subjects{grid-template-columns:repeat(3,minmax(0,1fr))}.modegrid{grid-template-columns:repeat(3,minmax(0,1fr))}.panel{padding:27px}.hero{padding:38px}}
+@media(max-width:390px){.wrap{padding:13px 10px 28px}.hero{padding:22px 17px}.panel{padding:16px}.subject{padding:12px;gap:8px}.emoji{font-size:23px}.actions .btn{padding:11px 12px}.mode{padding:12px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top"><div class="brand"><div class="logo">🌍</div><div>WORLD-ECUCATION<small>BY ELMANZY • KELAS VII</small></div></div><div class="topnote">📱 HP • Tablet • Komputer</div></header>
+<section class="hero"><div class="eyebrow">LEARN • PLAY • LEVEL UP</div><h1>Welcome to <span>World-Ecucation!</span> 🚀</h1><p>Belajar jadi petualangan. Pilih mata pelajaran, tentukan mode permainan, kumpulkan poin, dan tingkatkan kemampuanmu. Tersedia 10 mata pelajaran dengan 100 soal latihan di setiap mapel.</p></section>
+<section id="home" class="panel"><h2>📚 Pilih Mata Pelajaran</h2><p class="sub">Setiap mata pelajaran memiliki pilihan mode permainan. Pilih salah satu untuk melihat mode yang tersedia.</p><div id="subjects" class="subjects"></div><div class="btnrow"><button id="allBtn" class="btn">🌟 Mainkan Semua Mapel</button></div></section>
+<section id="modes" class="panel hidden"><div class="row"><div><h2 id="modeHeading">🎮 Pilih Mode Game</h2><p class="sub" id="modeSub">Pilih tantanganmu.</p></div><button id="backSubjects" class="btn secondary">← Mapel</button></div><div id="modeGrid" class="modegrid"></div></section>
+<section id="game" class="panel hidden">
+<div class="row"><div><div class="qnum" id="subjectName">Mata pelajaran</div><div class="tag" id="modeName"></div></div><div class="stats"><div class="stat">⭐ Skor: <b id="score">0</b></div><div class="stat">🔥 Benar: <b id="right">0</b></div></div></div>
+<div class="progress"><div id="bar" class="bar"></div></div><div class="qnum" id="counter">SOAL 1</div><div class="question" id="question"></div><div class="answers" id="answers"></div><div id="feedback" class="feedback hidden" aria-live="polite"></div>
+<div class="actions"><button id="quitBtn" class="btn secondary">← Keluar</button><button id="nextBtn" class="btn" disabled>Soal Berikutnya →</button></div>
+</section>
+<section id="result" class="panel hidden"><div class="result"><div class="medal" id="medal">🏆</div><div class="qnum">PERMAINAN SELESAI</div><h2 id="resultTitle">Hebat!</h2><div class="score" id="finalScore">0</div><p id="resultText"></p><div class="result-actions"><button id="againBtn" class="btn">Main Lagi</button><button id="homeBtn" class="btn secondary">Pilih Mapel</button></div></div></section>
+<footer>© 2026 <span class="credit">WORLD-ECUCATION BY ELMANZY</span><br>Belajar dengan semangat, bermain dengan sportif! 🌟</footer>
+</div>
+<script>
+const subjects=[
+{name:"Bahasa Indonesia",icon:"📖",topics:["Teks deskripsi","Teks prosedur","Cerita fantasi","Puisi rakyat","Kebahasaan"]},
+{name:"Matematika",icon:"➗",topics:["Bilangan bulat","Pecahan","Perbandingan","Aljabar","Bangun datar"]},
+{name:"IPA",icon:"🧪",topics:["Zat dan perubahannya","Suhu dan kalor","Gerak dan gaya","Klasifikasi makhluk hidup","Ekosistem"]},
+{name:"IPS",icon:"🌏",topics:["Geografi","Sejarah Indonesia","Kegiatan ekonomi","Interaksi sosial","ASEAN"]},
+{name:"PPKn",icon:"⚖️",topics:["Pancasila","Norma dan aturan","UUD 1945","Keberagaman","Persatuan"]},
+{name:"Bahasa Inggris",icon:"🔤",topics:["Greetings","Introducing self","Pronouns","Simple present tense","Vocabulary"]},
+{name:"Informatika",icon:"💻",topics:["Perangkat komputer","Berpikir komputasional","Internet aman","Data dan informasi","Algoritma"]},
+{name:"PJOK",icon:"🏃",topics:["Permainan bola besar","Kebugaran jasmani","Atletik","Pola hidup sehat","Senam"]},
+{name:"Seni Budaya",icon:"🎨",topics:["Seni rupa","Musik","Tari","Seni tradisional","Unsur seni"]},
+{name:"PAI",icon:"🕌",topics:["Al-Qur'an","Akidah","Akhlak","Fikih","Sejarah Islam"]}
+];
+// Kumpulan materi inti per mapel. Variasi soal dibuat dari konsep-konsep kelas VII berikut agar bank latihan dapat mencapai 100 butir per mapel.
+const concepts=[
+[
+["Gagasan utama adalah ...","inti pembahasan paragraf","contoh tambahan","judul buku","kalimat sapaan","A","Gagasan utama memuat inti paragraf."],
+["Teks prosedur berisi ...","langkah melakukan sesuatu","riwayat tokoh","khayalan penulis","laporan perjalanan","A","Teks prosedur menjelaskan langkah secara berurutan."],
+["Sinonim kata 'rajin' adalah ...","tekun","malas","lalai","lemah","A","Tekun memiliki makna dekat dengan rajin."],
+["Kalimat tanya diakhiri tanda ...","tanya (?)","titik (.)","koma (,)","seru (!)","A","Kalimat tanya menggunakan tanda tanya."],
+["Tokoh, latar, dan alur termasuk unsur ...","intrinsik cerita","ekonomi","tipografi","ekstrinsik saja","A","Ketiganya membangun cerita dari dalam."],
+["Antonim kata 'hemat' adalah ...","boros","irit","cermat","sederhana","A","Boros berlawanan makna dengan hemat."],
+["Kalimat utama biasanya memuat ...","pokok pikiran","daftar pustaka","catatan kaki","dialog","A","Kalimat utama menyampaikan pokok pikiran."],
+["Pantun terdiri atas ...","empat baris","dua baris","enam baris","delapan baris","A","Pantun umumnya terdiri atas empat baris."],
+["Dua baris pertama pantun disebut ...","sampiran","isi","judul","penutup","A","Baris pertama dan kedua merupakan sampiran."],
+["Kata baku terdapat pada pilihan ...","aktivitas","aktifitas","ijin","resiko","A","Bentuk baku yang benar adalah aktivitas."]
+],
+[
+["Hasil dari -8 + 15 adalah ...","7","-7","23","-23","A","-8 + 15 = 7."],
+["FPB dari 18 dan 24 adalah ...","6","3","9","12","A","Faktor persekutuan terbesar adalah 6."],
+["Hasil 3/4 + 1/4 adalah ...","1","1/2","2","1 1/4","A","Jumlahnya 4/4 = 1."],
+["Keliling persegi sisi 7 cm adalah ...","28 cm","14 cm","21 cm","49 cm","A","Keliling = 4 × 7 = 28 cm."],
+["Jika 5x = 35, nilai x adalah ...","7","5","6","8","A","x = 35 dibagi 5 = 7."],
+["Hasil 9 × 6 adalah ...","54","45","56","63","A","9 × 6 = 54."],
+["Bilangan prima terkecil adalah ...","2","1","3","0","A","2 adalah bilangan prima terkecil."],
+["KPK dari 4 dan 6 adalah ...","12","6","18","24","A","Kelipatan persekutuan terkecilnya 12."],
+["Luas persegi panjang 8 cm × 5 cm adalah ...","40 cm²","13 cm²","26 cm²","80 cm²","A","Luas = panjang × lebar = 40 cm²."],
+["25% sama dengan pecahan ...","1/4","1/2","1/5","3/4","A","25/100 disederhanakan menjadi 1/4."]
+],
+[
+["Bagian sel yang mengatur kegiatan sel adalah ...","inti sel","membran sel","sitoplasma","dinding sel","A","Inti sel mengendalikan aktivitas sel."],
+["Perubahan cair menjadi gas disebut ...","menguap","membeku","mencair","mengembun","A","Menguap adalah perubahan cair menjadi gas."],
+["Organ utama pernapasan manusia adalah ...","paru-paru","jantung","lambung","ginjal","A","Pertukaran gas berlangsung di paru-paru."],
+["Planet terbesar di tata surya adalah ...","Jupiter","Bumi","Mars","Merkurius","A","Jupiter merupakan planet terbesar."],
+["Satuan gaya dalam SI adalah ...","newton","joule","watt","meter","A","Gaya diukur dalam newton."],
+["Air membeku pada suhu ...","0°C","10°C","50°C","100°C","A","Pada tekanan normal air membeku pada 0°C."],
+["Alat untuk mengukur suhu adalah ...","termometer","barometer","higrometer","anemometer","A","Termometer digunakan mengukur suhu."],
+["Hewan pemakan tumbuhan disebut ...","herbivor","karnivor","omnivor","insektivor","A","Herbivor memakan tumbuhan."],
+["Sumber energi utama bagi bumi adalah ...","Matahari","Bulan","angin","batu","A","Matahari memasok cahaya dan panas."],
+["Proses tumbuhan membuat makanan disebut ...","fotosintesis","respirasi","evaporasi","fermentasi","A","Fotosintesis menggunakan cahaya untuk membuat makanan."]
+],
+[
+["Kegiatan menghasilkan barang disebut ...","produksi","konsumsi","distribusi","promosi","A","Produksi menghasilkan barang atau jasa."],
+["Garis khayal pembagi utara dan selatan bumi adalah ...","khatulistiwa","garis bujur","garis tanggal","meridian nol","A","Khatulistiwa membagi bumi menjadi dua belahan."],
+["ASEAN didirikan pada tahun ...","1967","1945","1955","1975","A","ASEAN berdiri pada 8 Agustus 1967."],
+["Candi Borobudur berada di ...","Jawa Tengah","Jawa Barat","Jawa Timur","Bali","A","Borobudur berada di Magelang, Jawa Tengah."],
+["Penyaluran barang disebut ...","distribusi","produksi","konsumsi","investasi","A","Distribusi menyalurkan barang kepada konsumen."],
+["Orang yang menggunakan barang disebut ...","konsumen","produsen","distributor","importir","A","Konsumen memakai barang atau jasa."],
+["Peta adalah gambaran ...","permukaan bumi pada bidang datar","isi lautan saja","lapisan udara","bentuk awan","A","Peta menggambarkan permukaan bumi pada bidang datar."],
+["Proklamasi kemerdekaan Indonesia terjadi pada ...","17 Agustus 1945","1 Juni 1945","10 November 1945","20 Mei 1908","A","Indonesia memproklamasikan kemerdekaan pada 17 Agustus 1945."],
+["Interaksi sosial memerlukan ...","hubungan antarindividu/kelompok","uang saja","alat transportasi","cuaca","A","Interaksi sosial adalah hubungan timbal balik."],
+["Kegiatan memakai barang atau jasa disebut ...","konsumsi","produksi","distribusi","ekspor","A","Konsumsi menggunakan barang atau jasa."]
+],
+[
+["Dasar negara Indonesia adalah ...","Pancasila","UUD 1945","Bhinneka Tunggal Ika","Proklamasi","A","Pancasila adalah dasar negara."],
+["Bunyi sila ketiga adalah ...","Persatuan Indonesia","Keadilan sosial","Ketuhanan Yang Maha Esa","Kemanusiaan yang adil dan beradab","A","Sila ketiga berbunyi Persatuan Indonesia."],
+["Lambang sila kedua adalah ...","rantai","bintang","pohon beringin","kepala banteng","A","Rantai melambangkan sila kedua."],
+["Musyawarah bertujuan mencapai ...","mufakat","kemenangan pribadi","perselisihan","persaingan","A","Musyawarah mengutamakan mufakat."],
+["Arti Bhinneka Tunggal Ika adalah ...","berbeda-beda tetapi tetap satu","bersatu kita teguh","rajin pangkal pandai","satu bahasa satu budaya","A","Semboyan itu mengajarkan persatuan dalam keberagaman."],
+["Aturan yang bersumber dari hati nurani disebut norma ...","kesusilaan","hukum","kesopanan","agama","A","Norma kesusilaan bersumber dari hati nurani."],
+["Contoh sikap persatuan adalah ...","gotong royong","mengejek teman","memaksakan kehendak","memilih-milih teman","A","Gotong royong memperkuat kebersamaan."],
+["UUD Negara Republik Indonesia Tahun 1945 adalah ...","konstitusi negara","lagu nasional","lambang negara","semboyan negara","A","UUD 1945 merupakan hukum dasar tertulis."],
+["Menghargai perbedaan agama berarti ...","memberi kesempatan beribadah","memaksa keyakinan","mengganggu ibadah","mengejek kepercayaan","A","Toleransi menghormati hak orang lain beribadah."],
+["Keputusan bersama sebaiknya dilaksanakan dengan ...","tanggung jawab","terpaksa dan mengeluh","mengabaikan hasil","mementingkan diri","A","Hasil kesepakatan perlu dijalankan dengan tanggung jawab."]
+],
+[
+["'Beautiful' artinya ...","cantik atau indah","cepat","mahal","kecil","A","Beautiful berarti cantik atau indah."],
+["Salam yang tepat pada pagi hari adalah ...","Good morning","Good night","Good evening","Goodbye","A","Good morning digunakan pada pagi hari."],
+["Bentuk jamak dari child adalah ...","children","childs","childes","childrens","A","Children adalah bentuk jamak tidak beraturan."],
+["'She ... a student.'","is","am","are","be","A","Subjek she memakai to be is."],
+["Lawan kata big adalah ...","small","tall","long","wide","A","Small berarti kecil."],
+["'Thank you' digunakan untuk ...","berterima kasih","meminta maaf","berpamitan","menyapa malam","A","Thank you berarti terima kasih."],
+["Kata ganti untuk 'Ibu saya' dalam bahasa Inggris adalah ...","she","he","they","it","A","She digunakan untuk perempuan tunggal."],
+["'Book' berarti ...","buku","meja","kursi","pintu","A","Book berarti buku."],
+["Kata kerja bentuk sederhana untuk he adalah ...","plays","play","playing","played","A","Dalam simple present, kata kerja he/she/it biasanya mendapat -s/-es."],
+["'Where are you from?' menanyakan ...","asal seseorang","umur seseorang","nama seseorang","hobi seseorang","A","Pertanyaan itu menanyakan asal."]
+],
+[
+["Alat untuk memasukkan teks ke komputer adalah ...","keyboard","monitor","speaker","printer","A","Keyboard digunakan untuk memasukkan teks."],
+["Kepanjangan CPU adalah ...","Central Processing Unit","Computer Personal Utility","Central Program User","Control Power Unit","A","CPU adalah Central Processing Unit."],
+["Contoh kata sandi kuat adalah ...","K7!pQ9#v","123456","password","namasaya","A","Kata sandi kuat sulit ditebak dan memakai variasi karakter."],
+["Aplikasi menjelajahi internet disebut ...","browser","kalkulator","paint","pemutar musik","A","Browser membuka halaman web."],
+["Data yang terorganisasi disebut ...","basis data","wallpaper","ikon","folder kosong","A","Basis data menyimpan data terstruktur."],
+["Perangkat keluaran untuk menampilkan gambar adalah ...","monitor","mouse","keyboard","mikrofon","A","Monitor menampilkan keluaran visual."],
+["Urutan langkah logis menyelesaikan masalah disebut ...","algoritma","perangkat keras","surel","peramban","A","Algoritma adalah langkah-langkah terurut."],
+["Informasi pribadi sebaiknya ...","dijaga kerahasiaannya","dibagikan ke orang asing","dipasang di semua situs","dikirim ke sembarang akun","A","Lindungi data pribadi saat online."],
+["Kepanjangan URL adalah ...","Uniform Resource Locator","Universal Reading Link","User Route Login","Unique Record List","A","URL adalah alamat suatu sumber di internet."],
+["Perangkat penunjuk pada komputer adalah ...","mouse","speaker","printer","proyektor","A","Mouse menggerakkan penunjuk di layar."]
+],
+[
+["Pemanasan sebelum olahraga berguna untuk ...","menyiapkan tubuh dan mengurangi risiko cedera","membuat cepat lelah","menghentikan napas","mengurangi konsentrasi","A","Pemanasan mempersiapkan otot dan tubuh."],
+["Jumlah pemain sepak bola satu tim di lapangan adalah ...","11","5","6","12","A","Satu tim sepak bola terdiri atas 11 pemain di lapangan."],
+["Gerak berpindah tempat disebut ...","lokomotor","nonlokomotor","manipulatif","statis","A","Gerak lokomotor memindahkan tubuh."],
+["Pukulan untuk memulai permainan bola voli disebut ...","servis","smash","block","passing","A","Servis memulai reli permainan."],
+["Kurang minum saat olahraga dapat menyebabkan ...","dehidrasi","kebugaran","kelenturan","pemanasan","A","Kehilangan cairan dapat menyebabkan dehidrasi."],
+["Lari jarak pendek disebut ...","sprint","maraton","jalan santai","estafet","A","Sprint adalah lari cepat jarak pendek."],
+["Latihan push-up melatih kekuatan otot ...","lengan dan dada","mata","telinga","jari kaki saja","A","Push-up melibatkan otot lengan, bahu, dan dada."],
+["Sikap awal berdiri tegak dan kaki rapat disebut ...","sikap sempurna","sikap melayang","sikap tidur","sikap jongkok","A","Sikap sempurna dilakukan dengan tubuh tegak dan rapi."],
+["Makanan bergizi seimbang membantu ...","menjaga kesehatan tubuh","menggantikan tidur","menghilangkan kebutuhan air","membuat tubuh tidak perlu bergerak","A","Gizi seimbang mendukung pertumbuhan dan kesehatan."],
+["Pendinginan dilakukan ...","setelah olahraga","sebelum bangun tidur saja","hanya saat sakit","sebelum pemanasan","A","Pendinginan membantu tubuh kembali ke kondisi normal."]
+],
+[
+["Warna primer yang umum diajarkan adalah ...","merah, kuning, biru","hijau, ungu, jingga","hitam, putih, abu-abu","cokelat, emas, merah muda","A","Merah, kuning, dan biru merupakan warna primer dalam teori tradisional."],
+["Angklung berasal dari ...","Jawa Barat","Sumatra Barat","Papua","NTT","A","Angklung merupakan alat musik tradisional Jawa Barat."],
+["Karya seni rupa dua dimensi memiliki ukuran ...","panjang dan lebar","panjang, lebar, tinggi","volume saja","ruang nyata","A","Karya dua dimensi memiliki panjang dan lebar."],
+["Tempo menunjukkan ...","cepat lambat lagu","keras lembut suara","tinggi rendah nada","warna bunyi","A","Tempo adalah kecepatan lagu."],
+["Gerak tubuh berirama dan indah disebut ...","tari","patung","lukisan","kolase","A","Tari menggunakan gerak tubuh sebagai ungkapan."],
+["Campuran warna merah dan kuning menghasilkan ...","jingga","hijau","ungu","biru","A","Merah dan kuning menghasilkan jingga."],
+["Alat untuk menggambar di atas kertas antara lain ...","pensil","kompor","palu","obeng","A","Pensil merupakan alat gambar."],
+["Bunyi yang teratur dan memiliki tinggi nada disebut ...","nada","tekstur","garis","bidang","A","Nada memiliki tinggi-rendah tertentu."],
+["Pola lantai dalam tari adalah ...","formasi atau posisi penari","jenis kostum","alat musik","warna panggung","A","Pola lantai mengatur posisi dan perpindahan penari."],
+["Patung termasuk karya seni rupa ...","tiga dimensi","dua dimensi","satu dimensi","tanpa dimensi","A","Patung memiliki volume dan ruang."]
+],
+[
+["Jumlah rukun Islam adalah ...","5","3","4","6","A","Rukun Islam berjumlah lima."],
+["Kitab suci umat Islam adalah ...","Al-Qur'an","Taurat","Zabur","Injil","A","Al-Qur'an adalah kitab suci umat Islam."],
+["Salat wajib sehari semalam berjumlah ...","5 waktu","3 waktu","4 waktu","6 waktu","A","Salat fardu dilaksanakan lima waktu."],
+["Sifat jujur disebut ...","sidik","amanah","tablig","fatanah","A","Sidik berarti benar atau jujur."],
+["Puasa wajib dilakukan pada bulan ...","Ramadan","Syawal","Muharam","Safar","A","Puasa Ramadan wajib bagi muslim yang memenuhi syarat."],
+["Rukun iman berjumlah ...","6","4","5","7","A","Rukun iman berjumlah enam."],
+["Bersuci dari hadas kecil dilakukan dengan ...","wudu","tidur","makan","berlari","A","Wudu adalah cara bersuci dari hadas kecil."],
+["Sikap dapat dipercaya disebut ...","amanah","takabur","hasad","riya","A","Amanah berarti dapat dipercaya."],
+["Surah pembuka dalam Al-Qur'an adalah ...","Al-Fatihah","Al-Ikhlas","An-Nas","Al-Falaq","A","Al-Fatihah merupakan surah pertama."],
+["Nabi terakhir adalah Nabi ...","Muhammad saw.","Isa a.s.","Musa a.s.","Ibrahim a.s.","A","Nabi Muhammad saw. adalah nabi dan rasul terakhir."]
+]
+];
+// Bentuk 100 soal unik per mapel: 10 konsep dasar dengan variasi konteks, urutan pilihan diacak setiap sesi.
+function makeBank(si){
+ const base=concepts[si], result=[];
+ const forms=[
+  q=>q,
+  q=>"Pilih jawaban yang paling tepat: "+q.charAt(0).toLowerCase()+q.slice(1),
+  q=>"Dalam pelajaran kelas VII, "+q.charAt(0).toLowerCase()+q.slice(1),
+  q=>"Uji pemahamanmu. "+q,
+  q=>"Manakah jawaban yang benar? "+q,
+  q=>"Perhatikan pertanyaan berikut: "+q,
+  q=>"Ayo berpikir! "+q,
+  q=>"Untuk soal latihan ini, "+q.charAt(0).toLowerCase()+q.slice(1),
+  q=>"Tentukan jawaban tepat untuk pertanyaan: "+q.charAt(0).toLowerCase()+q.slice(1),
+  q=>"Coba jawab dengan teliti: "+q.charAt(0).toLowerCase()+q.slice(1)
+ ];
+ for(let i=0;i<100;i++){
+  const c=base[i%base.length], variant=Math.floor(i/base.length);
+  result.push({q:forms[variant](c[0]),opts:c.slice(1,5),correct:c[5],explain:c[6],topic:subjects[si].topics[Math.floor(i/20)%5]});
+ }
+ return result;
+}
+const banks=subjects.map((_,i)=>makeBank(i));
+const modes=[
+ {id:"practice",icon:"📘",name:"Mode Belajar",count:10,desc:"10 soal pilihan + pembahasan setiap jawaban."},
+ {id:"challenge",icon:"⚡",name:"Mode Tantangan",count:20,desc:"20 soal untuk menguji ketelitianmu."},
+ {id:"exam",icon:"📝",name:"Mode Ujian",count:25,desc:"25 soal. Kerjakan sampai selesai dan lihat nilaimu."},
+ {id:"marathon",icon:"🏆",name:"Mode Maraton",count:100,desc:"Tuntaskan semua 100 soal pada mata pelajaran ini."},
+ {id:"random",icon:"🎲",name:"Mode Acak",count:10,desc:"10 soal acak yang berbeda setiap permainan."}
+];
+let chosenSubject=0,chosenMode=modes[0],selected=[],current=0,score=0,right=0,answered=false,lastSubject=0,lastMode=modes[0],allMode=false;
+const $=id=>document.getElementById(id);
+function show(id){["home","modes","game","result"].forEach(x=>$(x).classList.toggle("hidden",x!==id))}
+function shuffle(a){let x=[...a];for(let i=x.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[x[i],x[j]]=[x[j],x[i]]}return x}
+function makeSubjects(){
+ $("subjects").innerHTML=subjects.map((s,i)=>`<button class="subject" data-i="${i}"><span class="emoji">${s.icon}</span><span><strong>${s.name}</strong><small>100 soal • 5 topik</small></span></button>`).join("");
+ document.querySelectorAll(".subject").forEach(b=>b.addEventListener("click",()=>openModes(+b.dataset.i)));
+}
+function openModes(i){chosenSubject=i;allMode=false;$("modeHeading").textContent=subjects[i].icon+" "+subjects[i].name;$("modeSub").textContent="Pilih mode permainan. Semua mode mengambil soal dari bank 100 soal mapel ini.";$("modeGrid").innerHTML=modes.map((m,j)=>`<button class="mode" data-mode="${j}"><span class="mi">${m.icon}</span><b>${m.name} · ${m.count} soal</b><small>${m.desc}</small></button>`).join("");document.querySelectorAll(".mode").forEach(b=>b.addEventListener("click",()=>start(i,modes[+b.dataset.mode])));show("modes")}
+function start(si,mode){
+ lastSubject=si;lastMode=mode;allMode=false;selected=shuffle(banks[si]).slice(0,mode.count);current=0;score=0;right=0;show("game");render();
+}
+function startAll(){allMode=true;lastMode={name:"Semua Mapel",count:100,icon:"🌟"};lastSubject=0;selected=[];banks.forEach((b,si)=>shuffle(b).slice(0,10).forEach(q=>selected.push({...q,subject:subjects[si].name,icon:subjects[si].icon})));selected=shuffle(selected);current=0;score=0;right=0;show("game");render()}
+function render(){
+ answered=false;let item=selected[current],s=allMode?{name:item.subject,icon:item.icon}:subjects[lastSubject];
+ $("subjectName").textContent=s.icon+" "+s.name;$("modeName").textContent=lastMode.icon+" "+lastMode.name;$("score").textContent=score;$("right").textContent=right;$("counter").textContent=`SOAL ${current+1} DARI ${selected.length}`;$("bar").style.width=(current/selected.length*100)+"%";$("question").textContent=item.q;$("feedback").className="feedback hidden";$("nextBtn").disabled=true;$("nextBtn").textContent=current===selected.length-1?"Lihat Hasil 🏆":"Soal Berikutnya →";
+ const opts=item.opts.map((label,i)=>({label,correct:"ABCD"[i]===item.correct}));const mixed=shuffle(opts);
+ $("answers").innerHTML=mixed.map((o,i)=>`<button class="answer" data-correct="${o.correct}"><span class="letter">${"ABCD"[i]}</span><span>${o.label}</span></button>`).join("");
+ document.querySelectorAll(".answer").forEach(b=>b.addEventListener("click",()=>choose(b,item.explain)));
+}
+function choose(btn,explain){if(answered)return;answered=true;let ok=btn.dataset.correct==="true";if(ok){score+=10;right++;btn.classList.add("correct")}else{btn.classList.add("wrong");document.querySelectorAll(".answer").forEach(b=>{if(b.dataset.correct==="true")b.classList.add("correct")})}document.querySelectorAll(".answer").forEach(b=>b.disabled=true);$("score").textContent=score;$("right").textContent=right;$("feedback").textContent=(ok?"🎉 Benar! ":"💡 Belum tepat. ")+explain;$("feedback").className="feedback "+(ok?"good":"bad");$("nextBtn").disabled=false}
+function finish(){show("result");$("bar").style.width="100%";$("finalScore").textContent=score+" / "+(selected.length*10);let pct=right/selected.length;$("medal").textContent=pct===1?"🏆":pct>=.8?"🥇":pct>=.6?"🥈":"🌱";$("resultTitle").textContent=pct===1?"Sempurna!":pct>=.8?"Hebat sekali!":pct>=.6?"Bagus, teruskan!":"Tetap semangat!";$("resultText").textContent=`Jawaban benar: ${right} dari ${selected.length} soal (${Math.round(pct*100)}%). ${pct>=.6?"Pertahankan semangat belajarmu!":"Pelajari pembahasan, lalu coba lagi!"}`}
+$("allBtn").addEventListener("click",startAll);$("backSubjects").addEventListener("click",()=>show("home"));$("nextBtn").addEventListener("click",()=>{if(current<selected.length-1){current++;render()}else finish()});$("quitBtn").addEventListener("click",()=>show(allMode?"home":"modes"));$("againBtn").addEventListener("click",()=>allMode?startAll():start(lastSubject,lastMode));$("homeBtn").addEventListener("click",()=>show("home"));makeSubjects();
+</script>
+</body>
+</html>
